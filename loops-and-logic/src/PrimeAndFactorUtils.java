@@ -39,6 +39,44 @@ public class PrimeAndFactorUtils {
         return factor_list;
     }
 
+    static int countFactors(int n) {
+
+        int count = 0;
+        n = Math.abs(n);
+
+        if (n == 0) return 0;
+        if (n == 1) return 1;
+
+        for (int i = 1; i * i <= n; i++) {
+            if (n % i == 0) {
+                count++;
+                if (i != n / i) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    static int sumOfFactors(int n) {
+
+        int sum = 0;
+        n = Math.abs(n);
+
+        if (n == 0) return 0;
+        if (n == 1) return 1;
+
+        for (int i = 1; i * i <= n; i++) {
+            if (n % i == 0) {
+                sum = sum + i;
+                if (i != n / i) {
+                    sum = sum + (n/i);
+                }
+            }
+        }
+        return sum;
+    }
+
     public static void main(String[] args) {
         int[] input = {121,234,-7899,0,1,12345};
 
@@ -46,6 +84,8 @@ public class PrimeAndFactorUtils {
             System.out.println("----------------------------------------------");
             System.out.println("Is " + num + " Prime? : " + isPrime(num));
             System.out.println("Factors of  " + num + " are : " + getFactors(num));
+            System.out.println("Count of Factors of  " + num + " is : " + countFactors(num));
+            System.out.println("Sum of Factors of  " + num + " are : " + sumOfFactors(num));
             System.out.println("----------------------------------------------");
         }
     }
